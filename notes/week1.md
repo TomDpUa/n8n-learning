@@ -6,7 +6,7 @@ gitignore - eto spisok faylov kotorye Git ne otpravlyaet na GitHub (paroli, sekr
 
 
 
-\### Chto sdelal
+### Chto sdelal
 
 * Ustanovil Git, sozdal repozitorij na GitHub
 * Ustanovil Docker, sozdal postojannyi kontejner s n8n
@@ -16,7 +16,7 @@ gitignore - eto spisok faylov kotorye Git ne otpravlyaet na GitHub (paroli, sekr
 
 
 
-\### Chto uznal
+### Chto uznal
 
 * .gitignore - eto spisok fajlov kotorye Git ne otpravljaet na GitHub (paroli, sekrety, .env)
 * Error Triger rabotaet tolko v production, ne v rejime testa
@@ -25,7 +25,7 @@ gitignore - eto spisok faylov kotorye Git ne otpravlyaet na GitHub (paroli, sekr
 
 
 
-\### Komandy Git
+### Komandy Git
 
 * git init, git add, git commit -m, git push, git status, git log --oneline
 
