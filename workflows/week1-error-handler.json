@@ -1,0 +1,109 @@
+{
+  "name": "week1-error-handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "29fc59e7-88c8-4423-99eb-735b6d8f1978",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dae92ddb-3071-42d9-b312-8ba964e2570d",
+              "name": "error_message",
+              "value": "=Упал workflow: {{ $json.workflow.name }} в ноде {{ $json.execution.lastNodeExecuted }}",
+              "type": "string"
+            },
+            {
+              "id": "c3e49265-de93-47ed-bfed-78a04ef829c8",
+              "name": "error_text",
+              "value": "={{ $json.execution.error.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0db1d34a-2e0c-4a1a-b147-616dcc628581",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "chatId": "5133295874",
+        "text": "=🔴 {{ $json.error_message }}\n\n💬 {{ $json.error_text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "cbf67d55-549b-4edb-8999-3d9be0b1d09b",
+      "name": "Send a text message",
+      "webhookId": "128aac8e-d672-440a-9272-f8beb5270475",
+      "credentials": {
+        "telegramApi": {
+          "id": "lPmdGfXXj132f8cT",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "b49d4cce-94ef-42dc-aa4e-0125201b73f0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1e0d191fb04a0a805b9003c2fe1e803d7d0c0ef9d0a335b0443e8ca01cad472b"
+  },
+  "id": "4LyOh270lRs821Lu",
+  "tags": []
+}
